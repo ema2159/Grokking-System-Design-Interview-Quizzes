@@ -1,4 +1,4 @@
-#+TITLE: Centaur tabs
+#+TITLE: Grokking System Design Interview Quizzes
 #+CREATOR: Emmanuel Bustos T.
 #+OPTIONS: toc:nil 
 
