@@ -2,8 +2,14 @@
 #+CREATOR: Emmanuel Bustos T.
 
 * When does data indexing shall be considered?
+  Sooner or later there comes a time when database performance is no longer satisfactory. Indexing is one of the first things that can be improved to enhance the data base's performance.
 * What is the main goal of an index on a data base table?
+  The goal of creating an index on a particular table in a database is to make it faster to search through the table and find the desired row or rows.
 * What is an index?
+  An index is a data structure that can be perceived as a table of contents that points to the location where actual data lives. Indexes can be created using one or more columns of a database table, providing the basis for both rapid random lookups and efficient access of ordered records.
 * For which type of databases are indexes particularly important?
+  Indexes are particularly important on very large databases with small payloads (data bases with a lot of rows and a small number of columns).
 * How do Indexes decrease write performance?
+  Although indexing may considerably increase a database's data retrieval speed, it will slow down data insertion and update. This is because when updating or adding rows to the database not only the data from those rows has to be written, but also the indexes, adding an additional overhead.
 * Is it worth adding indexes for improving the performance of search queries to a database that will be more written to than read from? Why? Why not?
+  No, because as previously mentioned, indexing increases the data retrieval time, but decreases the data writing time, so it will make no sense to decrease the performance of the most common operation in the database in favor of enhancing the least common operation.
