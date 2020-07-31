@@ -1,0 +1,15 @@
+#+TITLE: Centaur tabs
+#+CREATOR: Emmanuel Bustos T.
+#+OPTIONS: toc:nil 
+
+Hi! This is a repository in which I'll store different quizzes I make for the "Grokking System Design Interview".
+
+* Motivation
+* Why quizzes (questionnaires specifically)
+  I found out that when studying system design concepts, I would forget them the very next day so I had to start all over again until I was able to store them in my brain. Then, I remembered that when I was a kid, I had a teacher who used to teach us concepts by creating questionnaires, and for some reason, teaching stuff in a question/answer format works incredibly well (at least for me) so I decided to do the same with the *Glossary of System Design Basics* section of the Grooking System Design Interview Course. That has helped me a Lot and I wanted to share my questionnaires with people that may need them in the future.
+* Quizzes
+  1 - [[./Quizzes/Key Characteristics of Distributed Systems.org]]
+  2 - [[./Quizzes/Load Balancer.org]]
+  3 - [[./Quizzes/Caching.org]]
+  4 - [[./Quizzes/Data Partitioning.org]]
+  5 - [[./Quizzes/Indexes.org]]

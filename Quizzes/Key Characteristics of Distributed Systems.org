@@ -1,0 +1,28 @@
+#+TITLE: Key Characteristics of Distributed Systems Quiz
+#+CREATOR: Emmanuel Bustos T.
+
+* What are the key characteristics of a distributed system?
+  - Scalability
+  - Reliability
+  - Availability
+  - Efficiency
+  - Serviceability (manageability)
+* What's scalability?
+  It's a characteristic that describes the capability of a system, process, or a network to grow and manage increased demand.
+* What are the two types of scalability? Describe them.
+  - *Vertical scalability*: This consists on increasing the amount of resources (CPU, RAM, Storage etc.) in the already existing servers available on the system.
+  - *Horizontal scalability*: This consists on increasing the amount of servers in the system.
+* What's reliability?
+  It's a characteristic of distributed systems that describes its ability to deal with system failures. A reliable system is one that keeps functioning even when some of it components fail.
+* What's availability?
+  It's the characteristic of distributed systems which describes the time a system remains operational to perform its required function in a specific period. It is a simple measure of the percentage of time that a system, service, or a machine remains operational under normal conditions. 
+* What's the relationship between reliability and availability?
+  Reliability implies availability. A system that is reliable, is available, but a system that is available is not necessarily reliable
+* What are the two standard measures of efficiency? Describe them.
+  - *Response time or latency*: Measure that denotes the delay to obtain the first item.
+  - *Throughput or bandwidth*: Measure that denotes the number of items delivered in a given time unit.
+* Which are the unit costs of the two standard measures of efficiency?
+  - Response time -> Number of messages globally sent by the nodes of the system regardless of the message size.
+  - Throughput -> Size of messages representing the volume of data exchanges.
+* Describe the concept of serviceability (manageability)
+  Serviceability or manageability is the simplicity and speed with which a system can be repaired or maintained. The easier it is to fix a failed system, the more available it becomes.

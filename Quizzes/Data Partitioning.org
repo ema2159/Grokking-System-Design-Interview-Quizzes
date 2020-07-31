@@ -1,0 +1,41 @@
+#+TITLE: Data Partitioning
+#+CREATOR: Emmanuel Bustos T.
+
+* What is data partitioning?
+  It's a technique that consists in breaking up a big data base through several servers into smaller parts to improve the manageability, availability, performance and load balance of an application. The justification for data partitioning is that, after a certain scale point, it is cheaper and more feasible to scale horizontally by adding more machines than to grow it vertically by adding beefier servers.
+* Which partitioning methods exist? Describe them and they main problems as well.
+  - Horizontal partitioning: Also known as Data Sharding, this partitoning scheme consists into splitting a data base by its rows through several servers. The biggest problem with this partitioning method is that if the ranges for splitting the data base's rows are not chosen carefully, the system can end up with unbalanced servers.
+    [[./images/DPHorizontalPartitioning.jpg]]
+  - Vertical Partitioning: This partitioning scheme consist of dividing a data base to store specific features (columns) in different servers. Although it's quite straightforward to implement and has a low impact on the application, it's main problem is that if the application grows over time, the data bases may need to be further partitioned.
+    [[./images/DPVerticalPartitioning.jpg]]
+  - Directory based partitioning:  Directory based shard partitioning involves placing a lookup service in front of the sharded databases. The lookup service knows the current partitioning scheme and keeps a map of each entity and which database shard it is stored on. The lookup service is usually implemented as a webservice.
+The client application first queries the lookup service to figure out the shard (database partition) on which the entity resides/should be placed. Then it queries / updates the shard returned by the lookup service. This loosely coupled approach means we can perform tasks like adding servers to the DB pool or changing our partitioning scheme without having an impact on the application.
+[[./images/DPDirectoryBasedPartitioning.jpg]]
+* List and describe the different partitioning criteria that can be taken when performing data partitioning. Mention their main problems if any.
+  - Key or Hash-based partitioning: Under this scheme, we apply a hash function to some key attributes of the entity we are storing; that yields the partition number. The main problem with this approach is that it fixes the number of DB servers, and if it needs to be increased, the hashing function needs to be adapted or modified. A valid workaround is to use consistent hashing. 
+  - List Partitioning: In this scheme, each data base partition is assigned a list of values. Then each element of the database is assigned to a partition if the value of column assigned for the partition matches one of the values of the list assigned to the partition. For example:
+    #+BEGIN_SRC sql
+      CREATE TABLE employees (
+	id INT NOT NULL,
+	fname VARCHAR(30),
+	lname VARCHAR(30),
+	hired DATE NOT NULL DEFAULT '1970-01-01',
+	separated DATE NOT NULL DEFAULT '9999-12-31',
+	job_code INT,
+	store_id INT
+      )
+      PARTITION BY LIST(store_id) (
+	PARTITION pNorth VALUES IN (3,5,6,9,17),
+	PARTITION pEast VALUES IN (1,2,10,11,19,20),
+	PARTITION pWest VALUES IN (4,12,13,14,18),
+	PARTITION pCentral VALUES IN (7,8,15,16)
+      );
+    #+END_SRC
+    If an employee has a *store_id* equal to 3, it will be assigned to the *pNorth* partition. If it has a *store_id* of 7, it will be assigned to the *pCentral* partition etc.
+  - Round-robin Partitioning: This is a very simple strategy that ensures uniform data distribution. With ‘n’ partitions, the *ith* tuple is assigned to partition (i mod n).
+  - Composite Partitioning: This scheme consists in combining any of the strategies above mentioned
+* Which are some common problems of data partitioning? Describe them in detail.
+  - Joins and denormalization: Once a database is partitioned and spread across multiple machines it is often not feasible to perform joins that span database partitions. Such joins will not be performance efficient since data has to be compiled from multiple servers. A common workaround for this problem is to denormalize the database so that queries that previously required joins can be performed from a single table. Of course, the service now has to deal with all the perils of denormalization such as data inconsistency.
+  - Referential integrity: Trying to enforce data integrity constraints such as foreign keys in a partitioned database can be extremely difficult.
+Most of RDBMS do not support foreign keys constraints across databases on different database servers. Which means that applications that require referential integrity on partitioned databases often have to enforce it in application code. Often in such cases, applications have to run regular SQL jobs to clean up dangling references.
+  - Rebalancing: A DB partition scheme may present several balancing problems such as non uniform distribution through partitons or excess of load in some of the partitions. This may require the partition scheme to be rebalanced. Usually this implies downtime or the application or service, although utilizing schemes such as a directory based partitioning scheme makes easier the process of rebalancing at the cost of a more complex system.  

@@ -1,0 +1,34 @@
+#+TITLE: Caching Quiz
+#+CREATOR: Emmanuel Bustos T.
+
+* How does caching improve the infrastructure of the distributed system?
+  Caching enables a better usage of the existing resources in the infrastructure, as well as making otherwise unattainable product requirements feasible by utilizing the locality principle to manage and retrieve data more efficiently.
+* How does a cache work?
+ A cache is like short-term memory: it has a limited amount of space, but is typically faster than the original data source and contains the most recently accessed items. Caches can exist at all levels in architecture, but are often found at the level nearest to the front end where they are implemented to return data quickly without taxing downstream levels.
+* What is the locality principle?
+  Recently requested data is likely to be requested again.
+* How does placing a cache on a request layer node improves the performance of the system?
+  Placing a cache directly on a request layer node enables the local storage of response data. Each time a request is made to the service, the node will quickly return local cached data if it exists. If it is not in the cache, the requesting node will query the data from disk.
+* In which locations of the request node layer can the cache be located?
+  The cache on one request layer node can be located both in memory (which is very fast) and on the node’s local disk (faster than going to network storage).
+* Can you expand the caching mechanism when the request layer is expanded to multiple nodes? Which problems arise and how can they be solved?
+  The caching mechanism can be expanded when there are several nodes in the request layer, adding a local cache to each node. The main problem arises when the load balancer randomly distributes the requests across the nodes, thus increasing the number of cache misses. This is solved by adding global and distributed caches. 
+* What is a Content Distribution Network?
+  Its a type of cache that consists in a network of geographically dispersed servers. Each CDN node (also called Edge Servers) caches the static content of a site like the images, CSS/JS files and other structural components, so that they can be retrieved much quicker from the geographic locations where they are placed.
+* What can be done when a system is not large enough to have a CDN?
+  If the system we are building isn’t yet large enough to have its own CDN, future transition can be eased by serving the static media off a separate subdomain (e.g. static.yourservice.com) using a lightweight HTTP server like Nginx, and cut-over the DNS from your servers to a CDN later.
+* When should the data in a cache node be eliminated?
+  When the data is modified in the database, it should be invalidated in the cache; if not, this can cause inconsistent application behavior.
+* Explain the three main schemes for cache invalidation.
+  - Write-through cache: Under this scheme, data is written into the cache and the corresponding database at the same time. The cached data allows for fast retrieval and, since the same data gets written in the permanent storage, complete data consistency will exist between the cache and the storage. Also, this scheme ensures that nothing will get lost in case of a crash, power failure, or other system disruptions. The main disadvantage is that it brings a higher latency for write operations
+  - Write-around cache: This technique is similar to write through cache, but data is written directly to permanent storage, bypassing the cache. This can reduce the cache being flooded with write operations that will not subsequently be re-read, but has the disadvantage that a read request for recently written data will create a “cache miss” and must be read from slower back-end storage and experience higher latency for read operations.
+  - Write-back cache: Under this scheme, data is written to cache alone and completion is immediately confirmed to the client. The write to the permanent storage is done after specified intervals or under certain conditions. This results in low latency and high throughput for write-intensive applications, however, this speed comes with the risk of data loss in case of a crash or other adverse event because the only copy of the written data is in the cache.
+* What is a cache eviction?
+  Cache eviction refers to the process by which old, relatively unused, or excessively voluminous data can be dropped from the cache in favor of new data entries.
+* Mention the most common cache eviction policies.
+ - First In First Out (FIFO): The cache evicts the first block accessed without any regard to how often or how many times it was accessed before.
+ - Last In First Out (LIFO): The cache evicts the block accessed most recently first without any regard to how often or how many times it was accessed before (An actual *LIFO* doesn't make any sense in cache context. In the context of caches, LIFO usually refers to the MRU policy).
+ - Least Recently Used (LRU): Discards the least recently used items first.
+ - Most Recently Used (MRU): Discards, in contrast to LRU, the most recently used items first.
+ - Least Frequently Used (LFU): Counts how often an item is needed. Those that are used least often are discarded first.
+ - Random Replacement (RR): Randomly selects a candidate item and discards it to make space when necessary.

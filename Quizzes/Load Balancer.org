@@ -1,0 +1,32 @@
+#+TITLE: Load Balancing Quiz
+#+CREATOR: Emmanuel Bustos T.
+
+* What is load balancing?
+  It's a component of distributed systems that helps to spread the traffic across a cluster of servers to improve responsiveness and availability of applications, websites or databases. I keeps relevant information to track the availability and responsiveness of the different server clusters around the system and avoids sending traffic to servers with a high error rate or low responsiveness.
+* When will a load balancer (LB) will stop sending requests to a server? 
+  When this detects that the server has some problem that prevents it from correctly and efficiently processing the requests, like for example when the server has a high error rate, is not responding, or is not available.
+* Where does a LB usually sits? What does an LB improves in a distributed system?
+  I usually sits between the client and the servers accepting incoming network and application traffic and distributing the traffic across multiple backend servers using various algorithms.
+* What are the three places where one can place LB's in a scalable, reduntant web application?
+  - Between the client and the web server.
+  - Between the web servers and the internal platform layer.
+  - Between the internal platform layer and the database servers.
+* Mention some benefits of load balancing.
+  - Users experience faster, uninterrupted service.
+  - Service providers experience less downtime and higher throughput.
+  - Load balancing makes it easier for system administrators to handle incoming requests while decreasing wait time for users.
+  - Smart load balancers provide benefits like predictive analytics that determine traffic bottlenecks before they happen.
+  - System administrators experience fewer failed or stressed components.
+* How does the load balancer choose the backend server?
+  Load balancers consider two factors before forwarding a request to a backend server. They will first ensure that the server they choose is actually responding appropriately to requests and then use a pre-configured algorithm to select one from the set of healthy servers.
+* What is a health check?
+  It's a mechanism in which the LB regularly attempt to connect to backend servers to ensure that servers are listening. If a server fails a health check, it is automatically removed from the pool, and traffic will not be forwarded to it until it responds to the health checks again.
+* List and describe the different load balancing methods and their algorithms
+  - Least Connection Method: This method directs traffic to the server with the fewest active connections.
+  - Least Response Time Method: This algorithm directs traffic to the server with the fewest active connections and the lowest average response time.
+  - Least Bandwidth Method: This method selects the server that is currently serving the least amount of traffic measured in megabits per second (Mbps).
+  - Round Robin Method: This method cycles through a list of servers and sends each new request to the next server. When it reaches the end of the list, it starts over at the beginning.
+  - Weighted Round Robin Method: The weighted round-robin scheduling is designed to better handle servers with different processing capacities. Each server is assigned a weight (an integer value that indicates the processing capacity). Servers with higher weights receive new connections before those with less weights and servers with higher weights get more connections than those with less weights.
+  - IP Hash: Under this method, a hash of the IP address of the client is calculated to redirect the request to a server.
+* Why is redundancy needed when using LB's? How does this redundancy works?
+  Load balancers can be a single point of failure in the distributed system. To solve this, a second LB is added in parallel, then each LB monitors the health of the other and, since both of them are equally capable of serving traffic and failure detection, in the event the main load balancer fails, the second load balancer takes over.

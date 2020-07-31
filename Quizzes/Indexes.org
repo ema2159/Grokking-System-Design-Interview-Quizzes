@@ -1,0 +1,9 @@
+#+TITLE: Indexes
+#+CREATOR: Emmanuel Bustos T.
+
+* When does data indexing shall be considered?
+* What is the main goal of an index on a data base table?
+* What is an index?
+* For which type of databases are indexes particularly important?
+* How do Indexes decrease write performance?
+* Is it worth adding indexes for improving the performance of search queries to a database that will be more written to than read from? Why? Why not?
