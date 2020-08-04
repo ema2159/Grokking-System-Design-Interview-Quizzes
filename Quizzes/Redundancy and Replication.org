@@ -1,0 +1,8 @@
+#+TITLE: Redundancy and Replication
+#+CREATOR: Emmanuel Bustos T.
+
+* What is redundancy in a distributed system?
+* Why redundancy is key in a large scale distributed system?
+* What is replication?
+* How is replication used in database management systems?
+ 
