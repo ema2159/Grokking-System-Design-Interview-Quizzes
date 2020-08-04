@@ -1,0 +1,18 @@
+#+TITLE: Proxies
+#+CREATOR: Emmanuel Bustos T.
+
+* What is a proxy server?
+  A proxy server is an intermediate server that's positioned between the client and the back-end server. It's a software/hardware component that acts as an intermediary for requests from clients that seek resources from other servers. 
+* What are proxies typically used for?
+  Proxies are typically used as requests filters, requests loggers or even request transformers (adding/removing headers,, encrypting/decrypting, compressing etc. It also caches requests so if multiple clients access a particular resource, the proxy server can cache it and serve it to the following clients without having to go to the remote server.
+* Where can proxies reside?
+  Proxies can reside on the client’s local server or anywhere between the client and the remote servers.
+* What is an open proxy?
+  An open proxy is a type of proxy that is accessible by any client in the Internet. Generally, a proxy server only allows users within a network group (i.e. a closed proxy) to store and forward Internet services such as DNS or web pages to reduce and control the bandwidth used by the group. With an open proxy, however, any user on the Internet is able to use this forwarding service. 
+  [[./images/PSOpenProxy.png]]
+* Mention and describe the two main open proxy types.
+  - *Anonymous Proxy*: An anonymous proxy reveals its identity as a server but does not disclose the initial IP address. This proxy can be useful for some users because although it's easy to discover, it hides users' IP addresses.
+  - *Transparent Proxy*: This proxy server identifies itself, аnd wіth the support of HTTP heаders, the fіrst IP аddress cаn be vіewed. The mаіn benefіt of usіng thіs sort of server іs іts аbіlіty to cаche the websіtes.
+* What is a reverse proxy?
+  It's a type of proxy that retrieves resources on behalf of a client from one or more servers. Then, these are sent to the client, giving the appearance that they originated from the proxy itself.
+  [[./images/PSReverseProxy.png]]
