@@ -2,7 +2,11 @@
 #+CREATOR: Emmanuel Bustos T.
 
 * What is redundancy in a distributed system?
+  Redundancy is the duplication of critical components or functions of a distributed system in order to improve its reliability in the form of backup or fail-safe, and also to improve the system's performance.
 * Why redundancy is key in a large scale distributed system?
+  Redundancy removes single points of failure in the system, and provides backups if eventual problems arise. For example, if a file is stored in a single server, if this fails, then the file will be lost, so redundant copies of the file can be created and stored in other servers to solve this problem.
 * What is replication?
+  Replication consists in sharing information to ensure consistency between redundant sources such as software or hardware components, to improve reliability, fault-tolerance or accessibility. 
 * How is replication used in database management systems?
+  Usually a master-slave relationship is used between the original and the copies. The master gets all the updates and then it ripples them through the slaves. Slaves then send a message to the master indicating that it received the update successfully.
  
