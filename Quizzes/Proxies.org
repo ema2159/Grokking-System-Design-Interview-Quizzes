@@ -3,6 +3,7 @@
 
 * What is a proxy server?
   A proxy server is an intermediate server that's positioned between the client and the back-end server. It's a software/hardware component that acts as an intermediary for requests from clients that seek resources from other servers. 
+  [[./images/PSProxy.png]]
 * What are proxies typically used for?
   Proxies are typically used as requests filters, requests loggers or even request transformers (adding/removing headers,, encrypting/decrypting, compressing etc. It also caches requests so if multiple clients access a particular resource, the proxy server can cache it and serve it to the following clients without having to go to the remote server.
 * Where can proxies reside?
