@@ -7,7 +7,7 @@ Hi! This is a repository in which I'll store different quizzes I make for the "G
 * Motivation
   Once upon a time, I failed miserably an interview because I was asked not one, but two systems design questions during an interview for an entry level job. I'm an electrical engineer, and although my programming skills were quite decent at the moment, I was never taught any systems design concepts so I was caught off guard. After that experience, I decided to educate myself and gain as much knowledge as possible in the area, so that when I face a similar situation in the future I can ace that interview. 
 * Why quizzes (questionnaires specifically)
-  I found out that when studying system design concepts, I would forget them the very next day so I had to start all over again until I was able to store them in my brain. Then, I remembered that when I was a kid, I had a teacher who used to teach us concepts by creating questionnaires, and for some reason, teaching stuff in a question/answer format works incredibly well (at least for me) so I decided to do the same with the *Glossary of System Design Basics* section of the Grooking System Design Interview Course. That has helped me a Lot and I wanted to share my questionnaires with people that may need them in the future.
+  I found out that when studying system design concepts, I would forget them the very next day so I had to start all over again until I was able to store them in my brain. Then, I remembered that when I was a kid, I had a teacher who used to teach us concepts by creating questionnaires, and for some reason, learning stuff in a question/answer format works incredibly well (at least for me) so I decided to do the same with the *Glossary of System Design Basics* section of the Grooking System Design Interview Course. That has helped me a lot and I wanted to share my questionnaires with people that may need them in the future.
 * Quizzes
   1. [[./Quizzes/Key Characteristics of Distributed Systems.org][Key Characteristics of Distributed Systems]] 
   2. [[./Quizzes/Load Balancer.org][Load Balancer]]
@@ -15,3 +15,5 @@ Hi! This is a repository in which I'll store different quizzes I make for the "G
   4. [[./Quizzes/Data Partitioning.org][Data Partitioning]]
   5. [[./Quizzes/Indexes.org][Indexes]]
   6. [[./Quizzes/Proxies.org][Proxies]]
+  7. [[./Quizzes/Redundancy and Replication.org][Redundancy and Replication]]
+  8. [[./Quizzes/SQL vs. NoSQL.org][SQL vs. NoSQL]]

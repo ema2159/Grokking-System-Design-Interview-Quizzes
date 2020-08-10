@@ -1,0 +1,33 @@
+#+TITLE: SQL vs. NoSQL
+#+CREATOR: Emmanuel Bustos T.
+
+* What is a relational database (SQL)?
+  It's a type of database which stores data in the form of rows and columns. Relational databases are structured and have predefined schemas. Each row of an SQL database contains information about one entity and each column (also called attribute) contain all the separate data points from each of the entities.
+* Mention some popular SQL databases.
+  MySQL, Oracle, MS SQL Server, SQLite, Postgres and MariaDB
+* What does SQL stands for?
+  Structured query language
+* What is a non-relational database (NoSQL)?
+  It's a type of database with an unstructured, distributed structure and a dynamic schema.
+* Which are the most common types of NoSQL databases? Explain their characteristics.
+  - *Key-Value Stores*: Data is stored in an array of key-value pairs. The *key* is an attribute name which is linked to a *value*. Some popular key-value stores are Redis, Voldemort and Dynamo. 
+  - *Document Databases*: In these databases, data is stored in documents and these documents are grouped together in collections. Each document can have its own different structure. Some document databases are CouchDB and MongoDB.
+  - *Wide-Column Databases*: This NoSQL database type relies on column families, which are containers for rows. Unlike SQL databases, knowing all the columns up front is not needed and neither it is for the rows to have the same number of columns. They are usually utilized for analyzing large data sets. Some popular wide-column databases include Cassandra and HBase. 
+  - *Graph Databases*: These databases are used to store information which is best represented in a graph. Data is saved in a graph like structure with nodes (entities), properties (information about the entities) and lines (connections between entities). Some well known graph databases include Neo4J and InfiniteGraph. 
+* Under which circumstances a SQL database may perform better?
+* Which are the major high level differences between SQL and NoSQL databases?
+  - *Storage*: SQL databases store information in tables, with each row being an entity and each column being a data point. For example, when storing information about different animal species, each row would contain an animal species and it could have columns like 'Vertebrate', 'Animal kingdom', 'Type of reproduction' among many others. 
+  - *Schema*: In SQL, the schema is fixed, so the meaning of the columns must be decided and chosen before data entry and each row must have data for each column. The schema can be modified, but it requires going offline and the whole database has to be modified.
+    No SQL databases have dynamic schemas. Attributes can be added on the fly and each data entity does not have to have the same number of attributes or information.
+  - *Querying*: SQL databases use SQL for defining and manipulating the data (hence the name). In a NoSQL database, queries are focused in a collection if documents, sometimes called UnQL (unstructured query language) Different NoSQL databases have different syntax for using UnQL.
+  - *Scalability*: In most common situations, SQL databases are vertically scalable. This means that at a certain point, the database will reach a certain limit since its hardware (CPU, Memory etc) can either get too expensive or even it cannot be upgraded any further. A SQL database can be scaled horizontally but this can usually become too complicated and time consuming.
+    In the other hand, NoSQL databases are horizontally scalable, meaning that it they can be improved by adding more servers to the infrastructure with much less effort than in a SQL database. This makes NoSQL databases more cost-effective when upgrading comparing them to SQL databases and also a lot of NoSQL databases can distribute data across servers automatically.  
+  - *Reliability or ACID Compliancy (Atomicity, Consistency, Isolation, Durability)*: The majority of SQL databases are ACID compliant. They offer data reliability and also a safe guarantee of performing transactions.
+    NoSQL databases sacrifice ACID compliance for performance and scalability.
+* Under which circumstances an SQL database may perform better?
+  - When the system needs to ensure ACID compliance to reduce data anomalies and protect the data integrity.
+  - When the data is structured and unchanging.
+* Under which circumstances an NoSQL database may perform better?
+  - When storing large volumes of data that have little to no structure.
+  - When using cloud computing and storage. Cloud-based storage requires data to be easily spread across multiple servers to scale up.
+  - When a rapid development is desired. NoSQL databases can be developed much rapidly than SQL databases and they also don't require much preparation ahead of time.
