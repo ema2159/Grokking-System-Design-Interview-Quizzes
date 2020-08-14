@@ -1,0 +1,17 @@
+#+TITLE: CAP Theorem
+#+CREATOR: Emmanuel Bustos T.
+
+* What does the CAP theorem states?
+  It states that it is impossible for a distributed software system to simultaneously provide more than two out of the three following guarantees: Consistency, Availability and Partition tolerance.
+* What is consistency in the CAP theorem?
+  All the nodes see the same data at the same time. Consistency is achieved by updating several nodes before allowing further reads. Every read should receive the most recent write or an error.
+* What is availability in the CAP theorem?
+  Every request gets a response on success/failure, without the guarantee that it contains the most recent write. Availability is achieved by replicating the data across different servers.
+* What is partition tolerance in the CAP theorem?
+  The system continues to work despite message loss or partial failure. A system that is partition-tolerant can sustain any amount of network failure that doesn't result in a failure of the entire network. Data is sufficiently replicated across combinations of nodes and networks to keep the system up through intermittent outages.
+* Why can only two of the three properties of the CAP system be achieved in a system?
+  Building a general data store that is continually available, sequentially consistent and tolerant to any partition failures is not possible. This is because, in order to be consistent, all nodes should see the same set of updates in the same order, but if the network suffers a partition, updates in one partition might not make it to the other partitions before a client reads from the out-of-date partition after having read from the up-to-date one. The only thing to be done in this situation is to stop serving requests from the out-of-date partition, but then the service is no longer completely available.
+
+  #+caption: CAP Theorem Diagram (obtained from [[https://medium.com/system-design-blog/cap-theorem-1455ce5fc0a0][Medium]])
+  [[./images/CAPDiagram.png]]
+
