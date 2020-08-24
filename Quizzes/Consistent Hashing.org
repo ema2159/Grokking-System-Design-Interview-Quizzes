@@ -1,0 +1,20 @@
+#+TITLE: Consistent hashing
+#+CREATOR: Emmanuel Bustos T.
+
+* What is a distributed hash table?
+  A distributed hash table is a decentralized storage system that provides lookup and storage schemes similar to a hash table, storing key-value pairs. It is one of the fundamental components used in a distributed, scalable system.
+* Which problems does a non consistent hashing function have?
+  - It is not horizontally scalable. Whenever a new cache host is added to the system, all existing maps are broken.
+  - It may not be load balanced. In practice, it can be assumed that data is not going to be distributed uniformly. This translates into some caches becoming saturated, while others might not be doing much work.
+* What is consistent hashing?
+  It's a distributed hashing algorithm such that when a hash table is resized, only =n/m= keys  need to be remapped on average, where =n= is the number of keys and =m= is the total number of slots (usually servers).
+* How does consistent hashing work?
+  It works by mapping each object to a point on a circle. The system then maps each slot to several pseudo-randomly distributed points in the circle. In order to find where an object should be placed, the system needs to find the location of that object's key on the circle, then it needs to move around the circle until falling into the first slot it encounters.
+  If a slot becomes unavailable, the points it maps to will be removed. Requests for those points will now map to the next highest points.
+  #+caption: Consistent Hashing
+  [[./images/CHRing.jpg]]
+
+* How is load balancing managed in consistent hashing?
+  Since data is randomly distributed, it may not be uniformly distributed among the slots, which may make the keys on the caches unbalanced. In order to solve this, =virtual replicas= can be added throughout the ring. These =virtual replicas= are associated with each cache slot. This way, each cache slot is associated with several portions of the ring. 
+  #+caption: Consistent Hashing Load Balancing 
+  [[./images/CHLoadBalancing.jpg]]

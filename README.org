@@ -18,3 +18,4 @@ Hi! This is a repository in which I'll store different quizzes I make for the "G
   7. [[./Quizzes/Redundancy and Replication.org][Redundancy and Replication]]
   8. [[./Quizzes/SQL vs. NoSQL.org][SQL vs. NoSQL]]
   9. [[./Quizzes/CAP Theorem.org][CAP Theorem]]
+  10. [[./Quizzes/Consistent Hashing.org][Consistent Hashing]]
