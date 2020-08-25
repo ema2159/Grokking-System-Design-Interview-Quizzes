@@ -1,0 +1,45 @@
+#+TITLE: Long-Polling vs WebSockets vs Server-Sent Events
+#+CREATOR: Emmanuel Bustos T.
+
+* What function do Long-Polling, WebSockets, and Server-Sent Events have in a distributed system?
+  They are communication protocols between a client and a server.
+* Mention the different steps of a regular HTTP request.
+  1. The client opens a connection and requests data from a server.
+  2. The server calculates the response.
+  3. The server sends the response back to the client on the opened request.
+* What is Polling?
+  Polling is a standard technique used by the vast majority of AJAX applications. The basic idea is that the client repeatedly polls (or requests) a server for data. The client makes a request and waits for the server to respond with data. If no data is available, an empty response is returned.
+* Which are the different steps during a Polling operation?
+  1. The client opens a connection and requests data from the server using regular HTTP.
+  2. The requested webpage sends requests to the server at regular intervals.
+  3. The server calculates the response and sends it back, just like regular HTTP traffic.
+  4. The client repeats the above three steps periodically to get updates from the server.
+* What is the main problem with Polling?
+  The main problem with Polling is that it creates HTTP overhead, since the client keeps asking the server for any new data, which leads to a lot of empty responses.
+* What is HTTP Long-Polling?
+  It is a variation of the traditional polling technique. It allows the server to push information to the client whenever the data is available. With long polling, the client requests information from the server exactly as in normal polling, but with the expectation that the server may not respond immediately. This protocol is also referred as /Hanging GET/.
+* Which are its main differences with conventional Polling?
+  - If the server does not have any data available for the client, instead of sending an empty response, the server holds the request and waits until some data becomes available.
+  - Once the data becomes available, a full response is sent to the client. The client then immediately re-requests information from the server so that the server will almost always have an available waiting request that it can use to deliver data in response to an event.
+* Which are the different steps during an HTTP Long-Polling operation?
+  1. The client makes an initial request using regular HTTP and then waits for a response.
+  2. The server delays its response until an update is available or a timeout has occurred.
+  3. When an update is available, the server sends a full response to the client.
+  4. The client typically sends a new long-poll request, either immediately upon receiving a response or after a pause to allow an acceptable latency period.
+  5. Each long poll request has a timeout. The client has to reconnect periodically after the connection is closed due to timeouts.
+* What is a WebSocket? How does it work?
+  A WebSocket is a protocol that provides full duplex communication channels over a single TCP connection. It provides a persistent connection between a client and a sever that both parties can use to start sending data at any time. The client establishes a WebSocket connection through a process known as the WebSocket handshake.
+* What is a handshake in a Web Socket?
+  It is the method used to establish a web socket connection between a client and a server.
+  First, the server listens for incoming socket connections using a standard TCP socket. Then, the client sends a WebSocket handshake request for which the server returns a WebSocket handshake response. Once the connection is established, communication switches to a bidirectional binary protocol which does not conform to the HTTP protocol.
+* How does a socket enables low overhead communication between a client and a server?
+  This is made by providing a standardized way for the server to send content to the browser without being asked by the client and allowing for messages to be passed back and forth while keeping the connection open.
+* What are Server-Sent Events?
+  It's a protocol in which the client establishes a persistent and long-term connection with the server. Then, the server uses this connection to send data to the client. Using this protocol, the client cannot send data to the server, so it needs to use another protocol to do so.
+* Which are the different steps during Server-Sent Events?
+  1. The client requests data from a server using regular HTTP.
+  2. The requested webpage opens a connection to the server.
+  3. The servers send the data to the client whenever there's new information available. 
+* When are Server-Sent Events useful?
+  SSEs are best when real-time traffic from the server to the client is needed or if the server is generating data in a loop and will be sending multiple events to the client.
+

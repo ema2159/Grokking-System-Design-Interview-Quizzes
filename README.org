@@ -19,3 +19,4 @@ Hi! This is a repository in which I'll store different quizzes I make for the "G
   8. [[./Quizzes/SQL vs. NoSQL.org][SQL vs. NoSQL]]
   9. [[./Quizzes/CAP Theorem.org][CAP Theorem]]
   10. [[./Quizzes/Consistent Hashing.org][Consistent Hashing]]
+  11. [[./Quizzes/Long-Polling vs WebSockets vs Server-Sent Events.org][Long-Polling vs WebSockets vs Server-Sent Events]]
